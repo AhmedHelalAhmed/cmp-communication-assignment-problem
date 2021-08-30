@@ -4,10 +4,10 @@
       <h1>Assignment</h1>
     </header>
     <div class="container">
-      <active-user :userName="userName" :age="age"></active-user>
+      <active-user :userName="userName" :age="+age"></active-user>
       <user-data
         :userName="userName"
-        :age="age"
+        :age="+age"
         @update-data="updateData"
       ></user-data>
     </div>
@@ -25,7 +25,7 @@ export default {
   methods: {
     updateData(userName, age) {
       this.userName = userName;
-      this.age = age;
+      this.age = +age;
     },
   },
 };
