@@ -4,29 +4,35 @@
       <h1>Assignment</h1>
     </header>
     <div class="container">
-    <active-user></active-user>
-    <user-data></user-data>
+      <active-user :userName="userName" :age="age"></active-user>
+      <user-data
+        :userName="userName"
+        :age="age"
+        @update-data="updateData"
+      ></user-data>
     </div>
   </div>
 </template>
-
 
 <script>
 export default {
   data() {
     return {
-      
+      userName: "",
+      age: "",
     };
   },
   methods: {
-  
+    updateData(userName, age) {
+      this.userName = userName;
+      this.age = age;
+    },
   },
 };
 </script>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
-
 
 * {
   box-sizing: border-box;
@@ -39,8 +45,8 @@ html {
 body {
   margin: 0;
 }
-.container{
-    margin:  auto 30%;
+.container {
+  margin: auto 30%;
 }
 header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -55,7 +61,6 @@ header {
 }
 
 section {
-
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
   text-align: center;
@@ -63,7 +68,6 @@ section {
   display: inline-block;
   margin: 2rem;
   max-width: 20rem;
-
 }
 
 #app button {
@@ -93,5 +97,4 @@ section {
   width: 7rem;
   display: inline-block;
 }
-
 </style>

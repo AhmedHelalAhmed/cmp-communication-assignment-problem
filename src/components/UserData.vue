@@ -1,37 +1,47 @@
 <template>
-<section>
-<form @submit.prevent="submitData">
-    <div>
+  <section>
+    <form @submit.prevent="submitData">
+      <div>
         <label> Name: </label>
 
-        <input v-model="name" type="text" />
+        <input v-model="nameEntered" type="text" />
       </div>
-          <div>
+      <div>
         <label> Age: </label>
 
-        <input v-model="age" type="number" />
+        <input v-model="ageEntered" type="number" />
       </div>
 
       <div>
-          <button>save</button>
+        <button>save</button>
       </div>
-
-</form>
-
-</section>
+    </form>
+  </section>
 </template>
 
 <script>
 export default {
-  emits: [],
+  props: {
+    userName: {
+      type: String,
+      required: true,
+    },
+    age: {
+      type: Number,
+      required: true,
+    },
+  },
+  emits: ["update-data"],
   data() {
     return {
-     name:'',
-     age:''
+      nameEntered: this.userName,
+      ageEntered: this.age,
     };
   },
   methods: {
-  
+    submitData() {
+      this.$emit("update-data", this.nameEntered, this.ageEntered);
+    },
   },
 };
 </script>
